@@ -7,27 +7,35 @@ experimento.
 Cada outcome tiene una probabilidad asociada. La probabilidad del espacio
 muestral es 1.
 """
+import random
 
-e1={1:0.0,2:0.0,3:0.0}
-e2={3:0.0,4:0.0,5:0.0}
-e3={5:0.0,6:0.0,7:0.0}
-e4={}
+class Evento(dict):
+    def __init__(self, name=None, proba=None):
+        self.name=name
+        self.proba=proba
 
-S=[e1,e2,e3,e4]
-print(S)
+    def creacion(self):
+        items=[1, 2, 3, 4, 5, 6, 7, 8, 9]
+        probas=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+        out=random.sample(items,3)
+        prob=random.sample(probas,3)
 
-def emptiness(event):#el evento es un dict
-    if len(event)==0:
-        print ("Empty event")
-    else:
-        print("Not empty set. Length is",len(event))
+        for i in out:
+            #print (i)
+            self.name=i
+        for j in prob:
+            #print(j)
+            self.probas=j
+        #print(len(probas))
+        return self
 
-def uniones(eventos):#Una lista de eventos a unir
-    unes={}
-    for i in eventos:
-        #print(i.keys())
-        unes=dict(list(unes.items())+ list(i.items()))
-    print(unes.keys())
+e=Evento()
+e.creacion()
+for i in e:
+    print (i.keys())
+    print(i.proba)
 
-emptiness(e1)
-uniones([e1,e2,e3])
+#out=[]
+#items = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+#out=random.sample(items,3)
+#print (out)
